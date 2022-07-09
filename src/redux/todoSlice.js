@@ -31,6 +31,3 @@ const todoSlise = createSlice({
 export const { addUser, deleteUser, filterUsers } = todoSlise.actions;
 
 export default todoSlise.reducer;
-
-export const getState = state => state.todos.contacts.items;
-export const getFilter = state => state.todos.contacts.filter.toLowerCase();

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import s from './Filter.module.css';
 import { filterUsers } from '../../redux/todoSlice';
+import s from './Filter.module.css';
 
 function Filter() {
   const handleInputChange = e => {

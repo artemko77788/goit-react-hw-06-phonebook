@@ -6,12 +6,13 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
 function ContactForm() {
+  const dispatch = useDispatch();
+
   const handleSubmite = (values, { resetForm }) => {
     const id = nanoid();
     dispatch(addUser({ ...values, id }));
     resetForm();
   };
-  const dispatch = useDispatch();
 
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required(),
