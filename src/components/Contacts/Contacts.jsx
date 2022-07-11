@@ -5,23 +5,16 @@ import { BiArrowBack } from 'react-icons/bi';
 import s from './Contacts.module.css';
 
 import { deleteUser } from '../../redux/todoSlice';
-import { getContacts, getFilter } from 'redux/getTodos';
+
+import { filteredContacts } from 'redux/contacts-selector';
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const users = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-
-  const filterByUsers = () => {
-    return [...users].filter(contacts =>
-      contacts.name.toLowerCase().startsWith(filter)
-    );
-  };
-  const data = filterByUsers();
+  const contacts = useSelector(filteredContacts);
 
   return (
     <ul className={s.list}>
-      {data.map(({ name, id, number }) => {
+      {contacts.map(({ name, id, number }) => {
         return (
           <li key={id} className={s.item}>
             <span>{name}</span>: <span>{number}</span>
