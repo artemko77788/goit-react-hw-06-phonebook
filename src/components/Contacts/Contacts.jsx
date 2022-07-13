@@ -6,7 +6,7 @@ import s from './Contacts.module.css';
 
 import { deleteUser } from '../../redux/todoSlice';
 
-import { filteredContacts } from 'redux/contacts-selector';
+import { filteredContacts } from 'redux/contactsSelectors';
 
 const Contacts = () => {
   const dispatch = useDispatch();
