@@ -13,7 +13,7 @@ import {
 import todoReduser from './todoSlice';
 
 const rootReduser = combineReducers({
-  todos: todoReduser,
+  todo: todoReduser,
 });
 
 const persistConfig = {

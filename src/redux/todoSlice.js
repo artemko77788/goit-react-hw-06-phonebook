@@ -3,8 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const todoSlise = createSlice({
   name: 'todos',
   initialState: {
-    contacts: { items: [] },
-    filter: '',
+    contacts: { items: [], filter: '' },
   },
 
   reducers: {
@@ -24,7 +23,7 @@ const todoSlise = createSlice({
       );
     },
     filterUsers(state, action) {
-      state.filter = action.payload;
+      state.contacts.filter = action.payload;
     },
   },
 });
