@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const todoSlise = createSlice({
-  name: 'todo',
+  name: 'todos',
   initialState: {
-    contacts: { items: [], filter: '' },
+    contacts: { items: [] },
+    filter: '',
   },
 
   reducers: {
@@ -23,7 +24,7 @@ const todoSlise = createSlice({
       );
     },
     filterUsers(state, action) {
-      state.contacts.filter = action.payload;
+      state.filter = action.payload;
     },
   },
 });
