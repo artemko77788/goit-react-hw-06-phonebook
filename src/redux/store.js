@@ -1,4 +1,4 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -12,20 +12,17 @@ import {
 } from 'redux-persist';
 import todoReduser from './todoSlice';
 
-const rootReduser = combineReducers({
-  todo: todoReduser,
-});
-
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['filter'],
+  whitelist: ['contacts'],
 };
 
-const persistedReduser = persistReducer(persistConfig, rootReduser);
+const persistedReduser = persistReducer(persistConfig, todoReduser);
 
 const store = configureStore({
   reducer: persistedReduser,
+
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
