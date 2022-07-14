@@ -15,13 +15,13 @@ import { rootReduser } from './todoSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['contacts'],
+  blacklist: ['filter'],
 };
 
 const persistedReduser = persistReducer(persistConfig, rootReduser);
 
 const store = configureStore({
-  reducer: persistedReduser,
+  reducer: { contacts: persistedReduser },
 
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
