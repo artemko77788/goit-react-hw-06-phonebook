@@ -1,34 +1,48 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { combineReducers, createSlice } from '@reduxjs/toolkit';
 
 const todoSlise = createSlice({
-  name: 'contacts',
+  name: 'items',
   initialState: {
-    contacts: { items: [] },
-    filter: '',
+    items: [],
   },
 
   reducers: {
     addUser(state, action) {
-      for (const { name } of state.contacts.items) {
+      for (const { name } of state.items) {
         if (name.toLowerCase() === action.payload.name.toLowerCase()) {
           alert(`${name} is already in contacts.`);
           return;
         }
       }
 
-      state.contacts.items.push(action.payload);
+      state.items.push(action.payload);
     },
     deleteUser(state, action) {
-      state.contacts.items = state.contacts.items.filter(
+      state.items = state.items.filter(
         contact => contact.id !== action.payload
       );
-    },
-    filterUsers(state, action) {
-      state.filter = action.payload;
     },
   },
 });
 
-export const { addUser, deleteUser, filterUsers } = todoSlise.actions;
+const filterSlise = createSlice({
+  name: 'value',
+  initialState: {
+    value: '',
+  },
+  reducers: {
+    filterUsers(state, action) {
+      state.value = action.payload;
+    },
+  },
+});
 
-export default todoSlise.reducer;
+export const { addUser, deleteUser } = todoSlise.actions;
+export const { filterUsers } = filterSlise.actions;
+const filterReduser = filterSlise.reducer;
+const itemsReduser = todoSlise.reducer;
+
+export const rootReduser = combineReducers({
+  contacts: itemsReduser,
+  filter: filterReduser,
+});

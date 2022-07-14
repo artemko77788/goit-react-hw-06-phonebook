@@ -10,7 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import todoReduser from './todoSlice';
+import { rootReduser } from './todoSlice';
 
 const persistConfig = {
   key: 'root',
@@ -18,7 +18,7 @@ const persistConfig = {
   whitelist: ['contacts'],
 };
 
-const persistedReduser = persistReducer(persistConfig, todoReduser);
+const persistedReduser = persistReducer(persistConfig, rootReduser);
 
 const store = configureStore({
   reducer: persistedReduser,
